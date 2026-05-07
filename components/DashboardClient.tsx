@@ -1,6 +1,6 @@
 "use client";
 
-import { TaskStatus } from "@prisma/client";
+import { TaskStatus } from "@/generated/prisma/enums";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 
 type DashboardProject = {

@@ -1,4 +1,4 @@
-import { Role, TaskStatus } from "@prisma/client";
+import { Role, TaskStatus } from "@/generated/prisma/enums";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 import { z } from "zod";
