@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Team Task Manager
 
-## Getting Started
+Full-stack Next.js app with Prisma Postgres, NextAuth credentials auth, role-based access, and task/project APIs.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Next.js App Router + TypeScript
+- Prisma ORM + Prisma Postgres
+- NextAuth credentials authentication
+- Tailwind CSS
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Local setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Install dependencies
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+	npm install
 
-## Learn More
+2. Ensure environment variables exist in .env
 
-To learn more about Next.js, take a look at the following resources:
+	DATABASE_URL=...
+	NEXTAUTH_SECRET=...
+	NEXTAUTH_URL=http://localhost:3000
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Apply migrations and seed
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+	npx prisma migrate dev
+	npx prisma db seed
 
-## Deploy on Vercel
+4. Run app
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+	npm run dev -- --webpack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment on Railway
+
+1. Connect this repository to Railway as a new service.
+2. Configure environment variables in Railway service settings:
+	- DATABASE_URL
+	- NEXTAUTH_SECRET
+	- NEXTAUTH_URL (set to your Railway public URL)
+3. Deploy from main branch.
+
+Railway config is included in [railway.json](railway.json).
+
+## Useful commands
+
+- Build: npm run build
+- Start: npm run start
+- Lint: npm run lint
+- Typecheck: npx tsc --noEmit
+- Prisma Studio: npx prisma studio
+- Verify DB connectivity: npx tsx scripts/verify-prisma.ts
