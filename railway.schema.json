@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Railway manifest (minimal)",
+  "type": "object",
+  "properties": {
+    "build": {
+      "type": "object",
+      "description": "Build configuration"
+    },
+    "deploy": {
+      "type": "object",
+      "description": "Deployment configuration"
+    }
+  },
+  "additionalProperties": true
+}
