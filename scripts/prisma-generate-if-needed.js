@@ -24,6 +24,12 @@ const prismaBin = fs.existsSync(path.join(process.cwd(), 'node_modules', '.bin',
   ? path.join(process.cwd(), 'node_modules', '.bin', 'prisma')
   : path.join(process.cwd(), 'node_modules', '.bin', 'prisma.cmd');
 
+// Only run generate if we have a DATABASE_URL (to avoid env resolution errors in CI)
+if (!process.env.DATABASE_URL) {
+  console.log('DATABASE_URL not set — skipping `prisma generate` to avoid config loading errors.');
+  process.exit(0);
+}
+
 console.log('Running `prisma generate` via local binary:', prismaBin);
 const res = spawnSync(prismaBin, ['generate'], { stdio: 'inherit' });
 process.exit(res.status === null ? 1 : res.status);
